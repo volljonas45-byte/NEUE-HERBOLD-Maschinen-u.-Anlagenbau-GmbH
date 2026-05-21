@@ -10,9 +10,9 @@ const buttonVariants = cva(
       variant: {
         /* Brand variants */
         primary:
-          "bg-brand-cyan text-brand-blue font-semibold hover:bg-brand-cyan-bright hover:shadow-[0_0_20px_rgba(0,200,255,0.4)] active:bg-brand-cyan-dark",
+          "bg-brand-cyan text-brand-blue font-semibold hover:bg-brand-cyan-bright active:bg-brand-cyan-dark",
         "primary-dark":
-          "bg-brand-blue text-white font-semibold hover:bg-brand-steel hover:shadow-lg border-brand-steel/30",
+          "bg-brand-blue text-white font-semibold hover:bg-brand-steel border-brand-steel/30",
         secondary:
           "border-brand-cyan text-brand-cyan bg-transparent hover:bg-brand-cyan/10 font-semibold",
         "secondary-dark":

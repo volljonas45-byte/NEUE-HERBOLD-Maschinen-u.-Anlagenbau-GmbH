@@ -1,315 +1,337 @@
 import Link from "next/link";
-import { ArrowRight, Recycle, Cog, Droplets, Zap, Package, Wrench } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
+
+/* ─── Data ─────────────────────────────────────────────────────────────── */
 
 const categories = [
   {
-    icon: Zap,
+    n: "01",
     title: "Vorzerkleinerung",
-    subtitle: "Schredder & Brecher",
-    description:
-      "Einwellen- und Zweiwellenschredder, Guillotinescheren, Rohrschredder",
+    sub: "Einwellen- und Zweiwellenschredder, Guillotinescheren, Rohrschredder",
     href: "/maschinen/vorzerkleinerung",
   },
   {
-    icon: Cog,
+    n: "02",
     title: "Schneidmühlen",
-    subtitle: "Nachzerkleinerung",
-    description: "LM, SM, SMV, SX — für PVC, PE/PP, Kautschuk und mehr",
+    sub: "Baureihen LM, SM, SMV, SX — für PVC, PE/PP, Kautschuk und mehr",
     href: "/maschinen/schneidmuehlen",
   },
   {
-    icon: Package,
+    n: "03",
+    title: "Hammermühlen",
+    sub: "HM-Baureihe für spröde Materialien und Gummiabfälle",
+    href: "/maschinen/hammermuehlen",
+  },
+  {
+    n: "04",
     title: "Feinmühlen",
-    subtitle: "Feinmahlung ZM-Baureihe",
-    description:
-      "Pulverisierung für PVC, PE, PP, ABS — Korngrößen bis unter 1 mm",
+    sub: "ZM-Baureihe — Pulverisierung bis unter 1 mm Korngröße",
     href: "/maschinen/feinmuehlen",
   },
   {
-    icon: Droplets,
+    n: "05",
     title: "Waschanlagen",
-    subtitle: "Waschen & Trennen",
-    description:
-      "Friktionswäscher, Waschtrommel, Intensivwäscher, Trockner",
+    sub: "Friktionswäscher, Waschtrommel, Intensivwäscher, Trockner",
     href: "/maschinen/waschanlagen",
   },
   {
-    icon: Recycle,
-    title: "Peripherie",
-    subtitle: "Absaugung & Sichtung",
-    description:
-      "Zick-Zack-Sichter, Feingutabscheider, Metalldetektoren, MFT",
+    n: "06",
+    title: "Peripherie & Mobile Anlagen",
+    sub: "Zick-Zack-Sichter, Feingutabscheider, Metalldetektoren, MFT",
     href: "/maschinen/peripherie",
-  },
-  {
-    icon: Wrench,
-    title: "Gebrauchtmaschinen",
-    subtitle: "Geprüfte Occasion",
-    description:
-      "Qualitätsgeprüfte Maschinen aus erster Hand — sofort verfügbar",
-    href: "/gebrauchtmaschinen",
   },
 ];
 
 const applications = [
   {
-    title: "PET-Flaschen",
-    description:
-      "Komplettanlagen für das Recycling von PET-Flaschen — 14-stufiger Prozess von der Vorzerkleinerung bis zur sauberen Flocke.",
+    idx: "A",
+    material: "PET-Flaschen",
+    tag: "Kunststoffrecycling",
+    desc: "14-stufiger Gesamtprozess — Vorzerkleinerung, Waschen, Trocknen bis zur sauberen Flocke.",
     href: "/branchen/kunststoffrecycling/pet-flaschen",
-    tag: "Kunststoffrecycling",
   },
   {
-    title: "Folienabfälle PE/PP",
-    description:
-      "Schneidmühlen und Waschanlagen für PE/PP-Folien — sauber, effizient, mit minimalem Energieeinsatz.",
+    idx: "B",
+    material: "Folienabfälle PE/PP",
+    tag: "Kunststoffrecycling",
+    desc: "Schneidmühlen und Waschanlagen für dünne Folien — effizient, energiesparend.",
     href: "/branchen/kunststoffrecycling/folienabfaelle",
-    tag: "Kunststoffrecycling",
   },
   {
-    title: "Getränkekästen",
-    description:
-      "Robuste Schredder und Schneidmühlen für massive Hohlkörper aus PE/PP — auch für Großmengen ausgelegt.",
-    href: "/branchen/kunststoffrecycling/getraenkekaesten",
+    idx: "C",
+    material: "Getränkekästen",
     tag: "Kunststoffrecycling",
+    desc: "Robuste Systeme für massive Hohlkörper — auch für große Durchsätze ausgelegt.",
+    href: "/branchen/kunststoffrecycling/getraenkekaesten",
   },
 ];
+
+/* ─── Page ──────────────────────────────────────────────────────────────── */
 
 export default function HomePage() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex items-center bg-brand-deep overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(0,200,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,200,255,1) 1px, transparent 1px)",
-            backgroundSize: "80px 80px",
-          }}
-        />
-        <div className="absolute top-1/3 right-0 w-[600px] h-[600px] rounded-full bg-brand-cyan/10 blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] rounded-full bg-brand-steel/40 blur-[100px] pointer-events-none" />
+      <section className="relative flex flex-col min-h-screen bg-brand-deep">
+        {/* Subtle side accent */}
+        <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-brand-cyan/40 to-transparent" />
 
-        <Container className="relative z-10 pt-32 pb-24">
-          <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-brand-cyan/30 bg-brand-cyan/10 mb-8">
-              <span className="size-1.5 rounded-full bg-brand-cyan animate-pulse" />
-              <span className="text-brand-cyan text-xs font-semibold tracking-widest uppercase">
-                Seit 1995 · Sinsheim · 40+ Länder
+        {/* Main content — anchored to bottom */}
+        <div className="flex-1 flex flex-col justify-end">
+          <Container className="pt-32 pb-0">
+            {/* Eyebrow */}
+            <div className="flex items-center gap-3 mb-10">
+              <span className="block h-px w-8 bg-brand-cyan shrink-0" />
+              <span className="text-brand-cyan text-xs font-semibold tracking-[0.2em] uppercase">
+                Maschinen &amp; Anlagenbau seit 1995
               </span>
             </div>
 
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-[0.95] tracking-tight">
-              Zerkleinerungs&shy;technik
+            {/* Headline */}
+            <h1 className="font-black text-white leading-[0.88] tracking-[-0.03em] text-[clamp(3.5rem,10vw,9rem)]">
+              Zerkleinerungs
               <br />
-              <span className="text-brand-cyan">aus Sinsheim.</span>
+              <span className="text-brand-cyan">technik</span>
+              <span className="text-white/20">.</span>
             </h1>
 
-            <p className="mt-8 text-lg sm:text-xl text-white/60 max-w-2xl leading-relaxed">
-              NEUE HERBOLD entwickelt und fertigt Hochleistungsmaschinen für
-              die Kunststoff- und Recyclingbranche — von der einzelnen
-              Schneidmühle bis zur schlüsselfertigen Komplettanlage.
-            </p>
-
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link
-                href="/maschinen"
-                className="inline-flex items-center gap-2 h-14 px-8 rounded-xl bg-brand-cyan text-brand-blue font-semibold text-base hover:bg-brand-cyan-bright hover:shadow-[0_0_24px_rgba(0,200,255,0.45)] transition-all duration-200"
-              >
-                Maschinen entdecken
-                <ArrowRight className="size-4" />
-              </Link>
-              <Link
-                href="/kontakt/anfrage"
-                className="inline-flex items-center gap-2 h-14 px-8 rounded-xl border border-white/25 text-white font-semibold text-base hover:bg-white/10 transition-all duration-200"
-              >
-                Anfrage stellen
-              </Link>
-            </div>
-          </div>
-        </Container>
-
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-bone to-transparent pointer-events-none" />
-      </section>
-
-      {/* ── Trust bar ────────────────────────────────────────────────────── */}
-      <section className="bg-bone border-y border-graphite-200 py-6">
-        <Container>
-          <div className="flex flex-wrap items-center justify-center gap-8 lg:gap-16">
-            {[
-              { value: "1995", label: "Gegründet" },
-              { value: "70+", label: "Mitarbeiter" },
-              { value: "40+", label: "Länder" },
-              { value: "30+", label: "Maschinentypen" },
-            ].map(({ value, label }) => (
-              <div key={label} className="flex items-baseline gap-2">
-                <span className="text-3xl font-black text-brand-blue">{value}</span>
-                <span className="text-sm text-graphite-600">{label}</span>
-              </div>
-            ))}
-            <div className="hidden lg:flex items-center gap-3 border-l border-graphite-200 pl-8">
-              <span className="text-xs font-semibold tracking-widest uppercase text-graphite-400">
-                Mitglied bei
-              </span>
-              {["VDMA", "PRE", "PREVENT"].map((org, i) => (
-                <span key={org} className="flex items-center gap-3">
-                  {i > 0 && <span className="text-graphite-200">·</span>}
-                  <span className="text-sm font-semibold text-brand-blue">{org}</span>
-                </span>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* ── Produktkategorien ─────────────────────────────────────────────── */}
-      <section className="py-24 bg-bone">
-        <Container>
-          <div className="mb-12">
-            <p className="text-xs font-semibold tracking-widest uppercase text-brand-cyan mb-3">
-              Produktportfolio
-            </p>
-            <h2 className="text-4xl lg:text-5xl font-black text-brand-blue leading-tight">
-              Maschinen für jeden
-              <br />
-              Recyclingprozess.
-            </h2>
-            <p className="mt-4 text-graphite-600 text-lg max-w-2xl">
-              Von der groben Vorzerkleinerung bis zur feinen Pulverisierung —
-              alle Maschinen werden in Sinsheim entwickelt und gefertigt.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {categories.map((cat) => {
-              const Icon = cat.icon;
-              return (
+            {/* Lead + CTA row */}
+            <div className="mt-10 pb-16 flex flex-col sm:flex-row sm:items-end gap-8 sm:gap-16 border-b border-white/10">
+              <p className="max-w-sm text-white/55 text-base leading-relaxed">
+                NEUE HERBOLD entwickelt und fertigt Hochleistungsmaschinen für
+                die Kunststoff- und Recyclingbranche — von der einzelnen
+                Schneidmühle bis zur schlüsselfertigen Komplettanlage.
+              </p>
+              <div className="flex items-center gap-6 shrink-0">
                 <Link
-                  key={cat.title}
-                  href={cat.href}
-                  className="group flex flex-col gap-4 p-6 rounded-2xl bg-paper border border-graphite-200 hover:border-brand-cyan/40 hover:shadow-lg hover:shadow-brand-cyan/5 transition-all duration-300"
+                  href="/maschinen"
+                  className="inline-flex items-center gap-2 h-12 px-7 bg-brand-cyan text-brand-blue font-semibold text-sm hover:bg-brand-cyan-bright transition-colors"
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="p-2.5 rounded-xl bg-brand-blue/5 group-hover:bg-brand-cyan/10 transition-colors">
-                      <Icon className="size-5 text-brand-blue group-hover:text-brand-cyan transition-colors" />
-                    </div>
-                    <ArrowRight className="size-4 text-graphite-400 group-hover:text-brand-cyan group-hover:translate-x-1 transition-all" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold tracking-wider uppercase text-graphite-400 mb-1">
-                      {cat.subtitle}
-                    </p>
-                    <h3 className="text-xl font-bold text-brand-blue">{cat.title}</h3>
-                    <p className="mt-2 text-sm text-graphite-600 leading-relaxed">
-                      {cat.description}
-                    </p>
-                  </div>
+                  Maschinen
+                  <ArrowRight className="size-3.5" />
                 </Link>
-              );
-            })}
-          </div>
+                <Link
+                  href="/kontakt/anfrage"
+                  className="inline-flex items-center gap-1.5 text-sm text-white/50 hover:text-white transition-colors"
+                >
+                  Anfrage stellen
+                  <ArrowUpRight className="size-3.5" />
+                </Link>
+              </div>
+            </div>
+          </Container>
+        </div>
 
-          <div className="mt-10 text-center">
+        {/* Stats strip */}
+        <div className="bg-black/20">
+          <Container className="py-4">
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-2">
+              {[
+                ["1995", "Gegründet"],
+                ["70+", "Mitarbeiter"],
+                ["40+", "Länder weltweit"],
+                ["30+", "Maschinentypen"],
+              ].map(([val, label]) => (
+                <div key={label} className="flex items-baseline gap-2">
+                  <span className="text-lg font-bold text-white">{val}</span>
+                  <span className="text-xs text-white/35 tracking-wide">{label}</span>
+                </div>
+              ))}
+              <div className="ml-auto hidden lg:flex items-center gap-4 text-xs text-white/25 tracking-widest">
+                <span>VDMA</span>
+                <span className="h-3 w-px bg-white/15" />
+                <span>PRE</span>
+                <span className="h-3 w-px bg-white/15" />
+                <span>PREVENT</span>
+              </div>
+            </div>
+          </Container>
+        </div>
+      </section>
+
+      {/* ── Produkte: Nummerierte Liste ──────────────────────────────────── */}
+      <section className="bg-bone py-24">
+        <Container>
+          {/* Section header */}
+          <div className="flex items-end justify-between mb-0 pb-6 border-b border-graphite-200">
+            <div>
+              <p className="text-xs tracking-[0.2em] uppercase text-graphite-400 mb-2">
+                Produktportfolio
+              </p>
+              <h2 className="text-3xl lg:text-4xl font-black text-brand-blue tracking-tight">
+                Unsere Maschinen.
+              </h2>
+            </div>
             <Link
               href="/maschinen"
-              className="inline-flex items-center gap-2 text-brand-cyan font-semibold hover:gap-3 transition-all"
+              className="hidden sm:inline-flex items-center gap-1.5 text-sm text-graphite-600 hover:text-brand-blue transition-colors pb-1"
             >
-              Alle Maschinentypen ansehen
-              <ArrowRight className="size-4" />
+              Alle ansehen
+              <ArrowRight className="size-3.5" />
+            </Link>
+          </div>
+
+          {/* Numbered rows */}
+          <div>
+            {categories.map((cat) => (
+              <Link
+                key={cat.n}
+                href={cat.href}
+                className="group flex items-center gap-6 md:gap-10 py-5 border-b border-graphite-200 hover:bg-graphite-100/60 transition-colors -mx-4 px-4"
+              >
+                <span className="text-xs font-mono text-graphite-400 w-5 shrink-0 select-none">
+                  {cat.n}
+                </span>
+                <div className="flex-1 min-w-0">
+                  <span className="block text-base font-semibold text-brand-blue group-hover:text-brand-cyan transition-colors">
+                    {cat.title}
+                  </span>
+                  <span className="block text-sm text-graphite-600 mt-0.5 leading-snug">
+                    {cat.sub}
+                  </span>
+                </div>
+                <ArrowRight className="size-4 text-graphite-300 group-hover:text-brand-cyan group-hover:translate-x-1 transition-all shrink-0" />
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-6 sm:hidden">
+            <Link
+              href="/maschinen"
+              className="inline-flex items-center gap-1.5 text-sm text-brand-cyan font-semibold"
+            >
+              Alle Maschinentypen
+              <ArrowRight className="size-3.5" />
             </Link>
           </div>
         </Container>
       </section>
 
-      {/* ── Über uns Teaser ───────────────────────────────────────────────── */}
-      <section className="py-24 bg-brand-blue">
-        <Container>
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <p className="text-xs font-semibold tracking-widest uppercase text-brand-cyan mb-4">
-                Das Unternehmen
-              </p>
-              <h2 className="text-4xl lg:text-5xl font-black text-white leading-tight">
-                Präzision made
-                <br />
-                in Sinsheim.
-              </h2>
-              <p className="mt-6 text-white/60 text-lg leading-relaxed">
+      {/* ── Über das Unternehmen ─────────────────────────────────────────── */}
+      <section className="bg-brand-blue overflow-hidden">
+        <Container className="py-20 lg:py-28">
+          <div className="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20 items-start">
+            {/* Left: decorative year */}
+            <div className="relative">
+              <div
+                className="font-black text-white/5 leading-none select-none pointer-events-none"
+                style={{ fontSize: "clamp(6rem, 18vw, 14rem)", letterSpacing: "-0.05em", lineHeight: 0.85 }}
+                aria-hidden="true"
+              >
+                1995
+              </div>
+              <div className="mt-6 lg:mt-0 lg:absolute lg:bottom-0 lg:left-0">
+                <p className="text-xs tracking-[0.2em] uppercase text-brand-cyan/60 mb-3">
+                  Das Unternehmen
+                </p>
+                <p className="text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight">
+                  Präzision
+                  <br />
+                  made in
+                  <br />
+                  Sinsheim.
+                </p>
+              </div>
+            </div>
+
+            {/* Right: content */}
+            <div className="pt-0 lg:pt-8">
+              <p className="text-white/60 text-lg leading-relaxed">
                 Seit 1995 entwickelt und fertigt NEUE HERBOLD Maschinen und
-                Anlagen für die Recycling- und Zerkleinerungsindustrie. Über 70
-                Mitarbeiter arbeiten täglich daran, dass Ihre Produktionslinie
-                zuverlässig läuft.
+                Anlagen für die Recycling- und Zerkleinerungsindustrie. Über
+                70 Mitarbeiter in Sinsheim-Reihen sorgen täglich dafür, dass
+                Ihre Anlage läuft.
               </p>
-              <div className="mt-8 flex flex-wrap gap-4">
+              <p className="mt-4 text-white/60 leading-relaxed">
+                Mit Vertretungen in über 40 Ländern und Mitgliedschaften in
+                VDMA, Plastics Recyclers Europe und PREVENT sind wir
+                international vernetzt — und trotzdem ein Unternehmen mit
+                kurzen Entscheidungswegen.
+              </p>
+
+              {/* Inline stats */}
+              <div className="mt-10 grid grid-cols-2 gap-y-6">
+                {[
+                  ["70+", "Mitarbeiter in Sinsheim"],
+                  ["40+", "Länder mit NEUE HERBOLD Anlagen"],
+                  ["30+", "Maschinentypen im Portfolio"],
+                  ["3", "Verbandsmitgliedschaften"],
+                ].map(([val, label]) => (
+                  <div key={label}>
+                    <div className="text-3xl font-black text-brand-cyan leading-none tracking-tight">
+                      {val}
+                    </div>
+                    <div className="mt-1 text-sm text-white/45 leading-snug">{label}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-10 flex flex-wrap gap-4">
                 <Link
                   href="/unternehmen/ueber-uns"
-                  className="inline-flex items-center gap-2 h-11 px-6 rounded-lg bg-brand-cyan text-brand-blue font-semibold text-sm hover:bg-brand-cyan-bright transition-colors"
+                  className="inline-flex items-center gap-2 h-11 px-6 bg-brand-cyan text-brand-blue font-semibold text-sm hover:bg-brand-cyan-bright transition-colors"
                 >
                   Über uns
-                  <ArrowRight className="size-4" />
+                  <ArrowRight className="size-3.5" />
                 </Link>
                 <Link
                   href="/service/technikum"
-                  className="inline-flex items-center gap-2 h-11 px-6 rounded-lg border border-white/25 text-white font-semibold text-sm hover:bg-white/10 transition-colors"
+                  className="inline-flex items-center gap-2 h-11 px-6 border border-white/20 text-white font-semibold text-sm hover:bg-white/8 transition-colors"
                 >
-                  Technikum & Probemahlung
+                  Technikum &amp; Probemahlung
                 </Link>
               </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { label: "Gegründet", value: "1995" },
-                { label: "Mitarbeiter", value: "70+" },
-                { label: "Länder", value: "40+" },
-                { label: "Maschinentypen", value: "30+" },
-              ].map((s) => (
-                <div
-                  key={s.label}
-                  className="p-6 rounded-2xl bg-white/5 border border-white/10"
-                >
-                  <div className="text-4xl font-black text-brand-cyan">{s.value}</div>
-                  <div className="mt-1 text-sm text-white/50">{s.label}</div>
-                </div>
-              ))}
             </div>
           </div>
         </Container>
       </section>
 
-      {/* ── Branchen-Anwendungen ──────────────────────────────────────────── */}
-      <section className="py-24 bg-bone">
+      {/* ── Anwendungen ───────────────────────────────────────────────────── */}
+      <section className="bg-bone py-24">
         <Container>
-          <div className="mb-12">
-            <p className="text-xs font-semibold tracking-widest uppercase text-brand-cyan mb-3">
-              Anwendungen
-            </p>
-            <h2 className="text-4xl lg:text-5xl font-black text-brand-blue leading-tight">
-              Komplette Prozess&shy;lösungen.
-            </h2>
+          <div className="flex items-end justify-between pb-6 border-b border-graphite-200 mb-0">
+            <div>
+              <p className="text-xs tracking-[0.2em] uppercase text-graphite-400 mb-2">
+                Anwendungen
+              </p>
+              <h2 className="text-3xl lg:text-4xl font-black text-brand-blue tracking-tight">
+                Komplette Prozesslösungen.
+              </h2>
+            </div>
+            <Link
+              href="/branchen"
+              className="hidden sm:inline-flex items-center gap-1.5 text-sm text-graphite-600 hover:text-brand-blue transition-colors pb-1"
+            >
+              Alle Branchen
+              <ArrowRight className="size-3.5" />
+            </Link>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-graphite-200 border-b border-graphite-200">
             {applications.map((app) => (
               <Link
-                key={app.title}
+                key={app.idx}
                 href={app.href}
-                className="group flex flex-col gap-4 p-6 rounded-2xl border border-graphite-200 bg-paper hover:border-brand-cyan/40 hover:shadow-lg transition-all duration-300"
+                className="group flex flex-col gap-4 p-6 lg:p-8 hover:bg-graphite-100/50 transition-colors"
               >
-                <div className="inline-flex px-2.5 py-1 rounded-full bg-brand-blue/5 text-brand-blue text-xs font-semibold w-fit">
-                  {app.tag}
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono text-graphite-400">{app.idx}</span>
+                  <ArrowUpRight className="size-4 text-graphite-300 group-hover:text-brand-cyan transition-colors" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-brand-blue">{app.title}</h3>
-                  <p className="mt-2 text-sm text-graphite-600 leading-relaxed">
-                    {app.description}
+                  <p className="text-[0.7rem] tracking-[0.15em] uppercase text-graphite-400 mb-1.5">
+                    {app.tag}
+                  </p>
+                  <h3 className="text-xl font-bold text-brand-blue leading-snug">
+                    {app.material}
+                  </h3>
+                  <p className="mt-3 text-sm text-graphite-600 leading-relaxed">
+                    {app.desc}
                   </p>
                 </div>
-                <div className="mt-auto flex items-center gap-1.5 text-brand-cyan text-sm font-semibold group-hover:gap-2.5 transition-all">
+                <div className="mt-auto pt-4 border-t border-graphite-200 text-xs font-semibold text-brand-cyan tracking-wide group-hover:tracking-wider transition-all">
                   Prozess ansehen
-                  <ArrowRight className="size-3.5" />
                 </div>
               </Link>
             ))}
@@ -317,30 +339,41 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* ── Final CTA ─────────────────────────────────────────────────────── */}
-      <section className="py-20 bg-brand-deep">
-        <Container className="text-center">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white">
-            Bereit für Ihr Projekt?
-          </h2>
-          <p className="mt-4 text-white/60 text-lg max-w-xl mx-auto">
-            Sprechen Sie mit unseren Experten — oder fordern Sie eine
-            Probemahlung in unserem Technikum in Sinsheim an.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/kontakt/anfrage"
-              className="inline-flex items-center gap-2 h-14 px-10 rounded-xl bg-brand-cyan text-brand-blue font-semibold text-base hover:bg-brand-cyan-bright hover:shadow-[0_0_24px_rgba(0,200,255,0.45)] transition-all duration-200"
-            >
-              Anfrage stellen
-              <ArrowRight className="size-4" />
-            </Link>
-            <a
-              href="tel:+49726192480"
-              className="inline-flex items-center gap-2 h-14 px-10 rounded-xl border border-white/25 text-white font-semibold text-base hover:bg-white/10 transition-all duration-200"
-            >
-              +49 (0) 7261 / 9248-0
-            </a>
+      {/* ── Abschluss-CTA ─────────────────────────────────────────────────── */}
+      <section className="bg-brand-deep py-24">
+        <Container>
+          <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-10">
+            <div>
+              <span className="block h-px w-12 bg-brand-cyan mb-8" />
+              <h2
+                className="font-black text-white leading-tight tracking-tight"
+                style={{ fontSize: "clamp(2rem, 5vw, 3.75rem)" }}
+              >
+                Bereit für
+                <br />
+                Ihr Projekt?
+              </h2>
+            </div>
+
+            <div className="flex flex-col gap-4 lg:items-end shrink-0">
+              <Link
+                href="/kontakt/anfrage"
+                className="inline-flex items-center gap-2 h-12 px-8 bg-brand-cyan text-brand-blue font-semibold text-sm hover:bg-brand-cyan-bright transition-colors"
+              >
+                Anfrage stellen
+                <ArrowRight className="size-3.5" />
+              </Link>
+              <a
+                href="tel:+49726192480"
+                className="text-sm text-white/40 hover:text-white/70 transition-colors text-right"
+              >
+                +49 (0) 7261 / 9248-0
+              </a>
+              <p className="text-xs text-white/25 leading-relaxed max-w-xs text-right">
+                Oder besuchen Sie unser Technikum in Sinsheim
+                für eine Probemahlung Ihrer Materialien.
+              </p>
+            </div>
           </div>
         </Container>
       </section>
