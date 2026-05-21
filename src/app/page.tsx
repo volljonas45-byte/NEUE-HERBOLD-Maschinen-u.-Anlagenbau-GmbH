@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Play } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { cn } from "@/lib/utils";
 
@@ -115,7 +115,7 @@ export default function HomePage() {
 
         {/* Left — content */}
         <div className="flex flex-col justify-end">
-          <Container className="pt-40 pb-0">
+          <Container className="pt-32 pb-0">
             <DarkLabel>Maschinen &amp; Anlagenbau seit 1995</DarkLabel>
 
             <h1 className="text-[clamp(3rem,7vw,6.5rem)] font-bold text-white leading-[1] tracking-[-0.04em]">
@@ -236,47 +236,38 @@ export default function HomePage() {
       </section>
 
       {/* ─── VIDEO ────────────────────────────────────────────────────── */}
-      <section className="bg-brand-deep">
-        <div className="relative" style={{ aspectRatio: "21/7" }}>
-          {/* Background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-deep via-[#0d1a48] to-brand-deep" />
-          <div
-            className="absolute inset-0 opacity-[0.04]"
-            style={{
-              backgroundImage: "linear-gradient(white 1px,transparent 1px),linear-gradient(90deg,white 1px,transparent 1px)",
-              backgroundSize: "64px 64px",
-            }}
-          />
-
-          {/* Center content */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-5 text-center">
+      <section className="bg-brand-deep py-16">
+        <Container>
+          <div className="flex items-end justify-between mb-8">
+            <div>
+              <DarkLabel>Maschinen in Aktion</DarkLabel>
+              <h2 className="text-[clamp(1.6rem,3vw,2.3rem)] font-bold text-white tracking-tight">
+                Unsere Maschinen live erleben.
+              </h2>
+            </div>
             <a
               href="http://www.youtube.com/user/NeueHerbold"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="YouTube"
-              className="group flex items-center justify-center size-16 border border-white/20 hover:border-brand-cyan hover:bg-brand-cyan/10 transition-all duration-200 rounded-sm"
+              className="hidden md:inline-flex items-center gap-1.5 text-sm text-white/40 hover:text-brand-cyan transition-colors"
             >
-              <Play className="size-6 text-white/60 group-hover:text-brand-cyan transition-colors ml-0.5" fill="currentColor" />
+              Alle Videos <ArrowUpRight className="size-3.5" />
             </a>
-            <div>
-              <p className="text-white font-semibold text-lg tracking-tight">Maschinen in Aktion</p>
-              <p className="text-white/30 text-sm mt-1 font-mono">youtube.com/user/NeueHerbold</p>
-            </div>
           </div>
-
-          {/* Monospace corner labels */}
-          <span className="absolute top-5 left-5 text-[0.6rem] font-mono text-white/15 tracking-[0.25em] uppercase">
-            NH · Video
-          </span>
-          <span className="absolute bottom-5 right-5 text-[0.6rem] font-mono text-white/15 tracking-[0.25em] uppercase">
-            14 Videos verfügbar
-          </span>
-        </div>
+          <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/9" }}>
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/kpg_TcSce9E?rel=0&modestbranding=1&color=white"
+              title="NEUE HERBOLD Imagefilm"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="absolute inset-0 w-full h-full border-0"
+            />
+          </div>
+        </Container>
       </section>
 
       {/* ─── PROZESS ──────────────────────────────────────────────────── */}
-      <section className="bg-white py-24 border-b border-graphite-200">
+      <section className="bg-graphite-100 py-24">
         <Container>
           <div className="flex items-end justify-between mb-12">
             <div>
@@ -285,26 +276,21 @@ export default function HomePage() {
                 Vom Abfall zum Werkstoff.
               </h2>
             </div>
-            <Link href="/branchen/kunststoffrecycling/pet-flaschen" className="hidden md:inline-flex items-center gap-1.5 text-sm text-graphite-500 hover:text-brand-blue transition-colors">
+            <Link href="/branchen/kunststoffrecycling" className="hidden md:inline-flex items-center gap-1.5 text-sm text-graphite-500 hover:text-brand-blue transition-colors">
               Vollprozess ansehen <ArrowRight className="size-3.5" />
             </Link>
           </div>
 
-          <div className="overflow-x-auto -mx-4 px-4">
-            <div className="flex gap-0 min-w-max lg:min-w-0 lg:grid lg:grid-cols-6">
-              {process.map((s, i) => (
-                <div key={s.n} className="relative w-44 lg:w-auto pr-6">
-                  {i < process.length - 1 && (
-                    <div className="absolute top-5 left-10 right-0 h-px bg-graphite-200 hidden lg:block" />
-                  )}
-                  <div className="size-10 border border-graphite-200 flex items-center justify-center bg-white mb-3 relative z-10">
-                    <span className="text-[0.65rem] font-mono text-brand-cyan">{s.n}</span>
-                  </div>
-                  <p className="text-xs font-semibold text-brand-blue">{s.title}</p>
-                  <p className="text-[0.7rem] text-graphite-500 mt-0.5 leading-relaxed">{s.desc}</p>
-                </div>
-              ))}
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+            {process.map((s) => (
+              <div key={s.n} className="relative bg-white border-t-2 border-brand-cyan/50 pt-5 pb-5 px-4">
+                <span className="block text-[2.8rem] font-black text-graphite-200 leading-none select-none mb-3 tracking-tighter">
+                  {s.n}
+                </span>
+                <p className="text-sm font-semibold text-brand-blue leading-tight">{s.title}</p>
+                <p className="text-[0.68rem] text-graphite-500 mt-1 leading-relaxed">{s.desc}</p>
+              </div>
+            ))}
           </div>
         </Container>
       </section>
@@ -393,35 +379,66 @@ export default function HomePage() {
       </section>
 
       {/* ─── KARRIERE ─────────────────────────────────────────────────── */}
-      <section className="bg-white py-24">
+      <section className="bg-white py-24 border-b border-graphite-200">
         <Container>
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
-              <Label>Karriere</Label>
+              <Label>Karriere & Bewerbung</Label>
               <h2 className="text-[clamp(2rem,3.5vw,3rem)] font-bold text-brand-blue leading-tight">
-                Bauen Sie mit,<br />was die Welt<br />sauberer macht.
+                Wir suchen Sie.<br />Starten Sie jetzt.
               </h2>
               <p className="mt-5 text-graphite-600 text-sm leading-[1.75]">
-                Wir suchen Konstrukteure, Zerspaner, Vertriebsingenieure
-                und Elektriker. Echte Maschinen, echte Wirkung.
+                Werden Sie Teil eines Teams, das täglich daran arbeitet,
+                Recycling effizienter zu machen. Echte Maschinen, echter
+                Impact — in Sinsheim gefertigt.
               </p>
-              <div className="mt-8 flex gap-4">
-                <Link href="/karriere" className="inline-flex items-center gap-2 h-10 px-6 border border-brand-blue text-brand-blue text-sm font-semibold rounded-sm hover:bg-brand-blue hover:text-white transition-colors">
-                  Alle Stellen <ArrowRight className="size-3.5" />
+              <div className="mt-4 flex items-center gap-2">
+                <span className="size-1.5 rounded-full bg-brand-cyan shrink-0" />
+                <span className="text-brand-cyan text-sm font-semibold">{jobs.length} offene Stellen</span>
+              </div>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  href="/karriere"
+                  className="inline-flex items-center gap-2 h-11 px-7 bg-brand-blue text-white text-sm font-semibold rounded-sm hover:bg-brand-steel transition-colors"
+                >
+                  Jetzt bewerben <ArrowRight className="size-3.5" />
+                </Link>
+                <Link
+                  href="/karriere/initiativbewerbung"
+                  className="inline-flex items-center gap-2 h-11 px-6 border border-brand-cyan text-brand-cyan text-sm font-semibold rounded-sm hover:bg-brand-cyan/10 transition-colors"
+                >
+                  Initiativbewerbung
                 </Link>
               </div>
             </div>
 
-            <div className="border border-graphite-200 divide-y divide-graphite-200">
-              {jobs.map((job) => (
-                <Link key={job} href="/karriere/stellenangebote" className="group flex items-center justify-between px-5 py-4 hover:bg-graphite-100/50 transition-colors">
-                  <span className="text-sm font-medium text-brand-blue">{job}</span>
-                  <ArrowRight className="size-3.5 text-graphite-300 group-hover:text-brand-cyan group-hover:translate-x-0.5 transition-all shrink-0" />
+            <div>
+              <p className="text-[0.65rem] font-semibold tracking-[0.2em] uppercase text-graphite-400 mb-3">
+                Aktuell gesucht
+              </p>
+              <div className="border border-graphite-200 divide-y divide-graphite-200">
+                {jobs.map((job) => (
+                  <Link
+                    key={job}
+                    href="/karriere/stellenangebote"
+                    className="group flex items-center justify-between px-5 py-4 hover:bg-brand-blue transition-all"
+                  >
+                    <span className="text-sm font-medium text-brand-blue group-hover:text-white transition-colors">{job}</span>
+                    <ArrowRight className="size-3.5 text-graphite-300 group-hover:text-white group-hover:translate-x-0.5 transition-all shrink-0" />
+                  </Link>
+                ))}
+              </div>
+              <div className="mt-3 bg-graphite-100 border border-graphite-200 px-5 py-4">
+                <p className="text-sm font-semibold text-brand-blue">Nichts Passendes dabei?</p>
+                <p className="text-[0.72rem] text-graphite-500 mt-0.5">
+                  Initiativbewerbungen sind herzlich willkommen.
+                </p>
+                <Link
+                  href="/karriere/initiativbewerbung"
+                  className="mt-2 inline-flex items-center gap-1.5 text-sm text-brand-cyan font-semibold hover:gap-2.5 transition-all"
+                >
+                  Initiativ bewerben <ArrowRight className="size-3.5" />
                 </Link>
-              ))}
-              <div className="px-5 py-3 bg-graphite-100/40 flex items-center justify-between">
-                <span className="text-[0.7rem] text-graphite-500">Initiativbewerbungen willkommen</span>
-                <Link href="/karriere/initiativbewerbung" className="text-[0.7rem] text-brand-cyan hover:text-brand-cyan-bright">Bewerben →</Link>
               </div>
             </div>
           </div>

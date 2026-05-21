@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown, Phone } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Logo } from "@/components/Logo";
 import { Container } from "@/components/layout/Container";
 import { cn } from "@/lib/utils";
@@ -55,30 +55,10 @@ export function SiteHeader() {
 
   return (
     <>
-      {/* ── Utility bar ─────────────────────────────────────────────────── */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-brand-deep/95 border-b border-white/8">
-        <Container className="flex items-center justify-between h-8">
-          <a
-            href="tel:+49726192480"
-            className="flex items-center gap-1.5 text-xs text-white/35 hover:text-white/60 transition-colors"
-          >
-            <Phone className="size-2.5" />
-            +49 (0) 7261 / 9248-0
-          </a>
-          <div className="flex items-center gap-4 text-xs text-white/30">
-            <a href="mailto:info@neue-herbold.de" className="hover:text-white/50 transition-colors">
-              info@neue-herbold.de
-            </a>
-            <span className="h-3 w-px bg-white/15" />
-            <span>Sinsheim-Reihen, Germany</span>
-          </div>
-        </Container>
-      </div>
-
       {/* ── Main header ─────────────────────────────────────────────────── */}
       <header
         className={cn(
-          "fixed top-8 left-0 right-0 z-40 transition-all duration-300",
+          "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
           scrolled
             ? "bg-brand-deep/97 backdrop-blur-xl border-b border-white/8 py-3"
             : "bg-transparent py-5",
@@ -155,7 +135,7 @@ export function SiteHeader() {
       {/* ── Mobile menu ─────────────────────────────────────────────────── */}
       {mobileOpen && (
         <div className="fixed inset-0 z-30 bg-brand-deep lg:hidden overflow-y-auto">
-          <Container className="pt-28 pb-10 flex flex-col gap-0">
+          <Container className="pt-24 pb-10 flex flex-col gap-0">
             {navItems.map((item) => (
               <div key={item.label}>
                 <Link

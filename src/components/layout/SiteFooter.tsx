@@ -42,26 +42,6 @@ const footerColumns = [
 export function SiteFooter() {
   return (
     <footer className="bg-brand-deep text-white/80">
-      {/* CTA bar */}
-      <div className="border-b border-white/10 bg-brand-blue/40">
-        <Container className="py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div>
-            <p className="text-white font-semibold text-lg">
-              Probemahlung anfragen
-            </p>
-            <p className="text-white/60 text-sm mt-0.5">
-              Testen Sie Ihre Materialien in unserem Technikum in Sinsheim.
-            </p>
-          </div>
-          <Link
-            href="/kontakt/anfrage"
-            className="shrink-0 inline-flex items-center h-11 px-7 rounded-lg bg-brand-cyan text-brand-blue font-semibold text-sm hover:bg-brand-cyan-bright hover:shadow-[0_0_16px_rgba(0,200,255,0.35)] transition-all duration-200"
-          >
-            Jetzt anfragen
-          </Link>
-        </Container>
-      </div>
-
       {/* Main footer columns */}
       <Container className="py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
