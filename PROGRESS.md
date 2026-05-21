@@ -10,7 +10,7 @@
 
 **Letzte Aktualisierung:** 2026-05-21 · MacBook
 **Aktives Gerät:** MacBook
-**Aktuelle Phase:** Phase 1 abgeschlossen → Phase 2 (Navigation komplett)
+**Aktuelle Phase:** Phase 2 abgeschlossen → Phase 3 (Produktseiten)
 **Live URL:** https://volljonas45-byte.github.io/NEUE-HERBOLD-Maschinen-u.-Anlagenbau-GmbH/
 **Repo:** https://github.com/volljonas45-byte/NEUE-HERBOLD-Maschinen-u.-Anlagenbau-GmbH
 
@@ -18,12 +18,14 @@
 
 ## Was als nächstes
 
-→ **Phase 2: Navigation komplett**
-- Mega-Menu Desktop (animiertes Dropdown mit Kategorien + Bildern)
-- Mobile Sheet-Menu (Vollbild, Akkordeon)
-- Header Scroll-Verhalten (hide-on-scroll-down, show-on-scroll-up)
-- Breadcrumbs-Komponente
-- Aktive Link-States
+→ **Phase 3: Maschinen-Übersichtsseite** `/maschinen/`
+- Kategorie-Hub mit 6 Kategorien als Grid-Cards
+- Jede Card: Maschinenname, Kurzbeschreibung, Link zur Kategorie
+- Hero mit Breadcrumbs
+
+→ **Phase 4: Produktdetailseiten** (Templates)
+- Kategorie-Template `/maschinen/[category]/`
+- Produkt-Detail-Template `/maschinen/[category]/[slug]/`
 
 ---
 
@@ -70,12 +72,12 @@
 
 ## Phase 2 — Navigation komplett
 
-- [ ] Mega-Menu für Desktop (Maschinen, Branchen, Service, Unternehmen, Karriere)
-- [ ] Mobile Sheet-Menu (Vollbild, Akkordeon)
-- [ ] Breadcrumbs-Komponente
-- [ ] Search-Funktion (lokal, ohne Backend)
-- [ ] Header-Scroll-Verhalten (Hide-on-Scroll-Down, Show-on-Scroll-Up)
-- [ ] Aktive Link-States (current page highlight)
+- [x] Mega-Menu für Desktop (Maschinen 3 Spalten, Branchen Dropdown mit Beschreibungen)
+- [x] Mobile Sheet-Menu (Vollbild, Akkordeon per Tap)
+- [x] Breadcrumbs-Komponente (`src/components/layout/Breadcrumbs.tsx`)
+- [x] Search-Funktion (SearchOverlay, ⌘K, 30+ statische Einträge)
+- [x] Header-Scroll-Verhalten (Hide-on-Scroll-Down, Show-on-Scroll-Up)
+- [x] Aktive Link-States (Cyan-Unterstrich, usePathname)
 
 ---
 
