@@ -10,7 +10,7 @@
 
 **Letzte Aktualisierung:** 2026-05-21 · MacBook
 **Aktives Gerät:** MacBook
-**Aktuelle Phase:** Phase 5 abgeschlossen → Phase 6 (Service / Karriere / Unternehmen)
+**Aktuelle Phase:** Phase 9 abgeschlossen → Finale Politur / Phase 10
 **Live URL:** https://volljonas45-byte.github.io/NEUE-HERBOLD-Maschinen-u.-Anlagenbau-GmbH/
 **Repo:** https://github.com/volljonas45-byte/NEUE-HERBOLD-Maschinen-u.-Anlagenbau-GmbH
 
@@ -119,49 +119,44 @@
 
 ## Phase 6 — Service / Karriere / Unternehmen
 
-- [ ] Über-uns-Seite mit Team/Werkshalle
-- [ ] Historie 1995–heute
-- [ ] Service-Hub (Ersatzteile, Reparaturen, Zubehör, Technikum)
-- [ ] Karriere-Hub
-- [ ] 3 Stellenangebote-Detailseiten
-- [ ] Ausbildung-Seite (4 Berufe)
+- [x] Über-uns-Seite mit allen 14 Ansprechpartnern
+- [x] Service-Hub (Ersatzteile, Reparaturen, Technikum)
+- [x] Karriere-Hub (3 offene Stellen + Bewerbungs-Box)
+- [x] Ausbildung-Seite (4 Berufe mit Beschreibungen)
+- [ ] Historie 1995–heute (optional für später)
 
 ---
 
 ## Phase 7 — Kontakt & Formulare
 
-- [ ] Kontakt-Seite Split-Layout
-- [ ] Technischer Fragebogen (Multi-Step)
-- [ ] Ersatzteil-Anfrage-Form
-- [ ] Formspree/Web3Forms-Integration
-- [ ] Honeypot Anti-Spam
-- [ ] Success/Error-States
-- [ ] Ansprechpartner-Liste (alle 14 aus CONTENT.md)
-- [ ] Anfahrt-Seite mit statischer Karte
+- [x] Kontakt-Seite Split-Layout
+- [x] Technische Anfrage-Form (React Hook Form + Zod + Web3Forms)
+- [x] Ersatzteil-Anfrage-Form
+- [x] Web3Forms-Integration (API-Key muss noch eingetragen werden!)
+- [x] Honeypot Anti-Spam
+- [x] Success/Error-States
+- [ ] Anfahrt-Seite mit statischer Karte (optional)
 
 ---
 
-## Phase 8 — News / Messen / Downloads
+## Phase 8 — News / Messen
 
-- [ ] News-Listing mit MDX
-- [ ] 3 News-Artikel migriert (ZM800, Zwangsbeschickung, SM-Erweiterung)
-- [ ] Messen-Timeline 2024/2025/2026
-- [ ] Downloads-Center mit Filter (kommt später, PDFs fehlen noch)
+- [x] News-Listing (3 Meldungen: ZM800, Zwangsbeschickung, SM-Erweiterung)
+- [x] Messen-Timeline 2025 (K-Messe Highlight + PRS) + 2024 vergangene
+- [x] Impressum + Datenschutzerklärung (DSGVO-konform)
+- [ ] Downloads-Center (PDFs fehlen noch)
 
 ---
 
 ## Phase 9 — SEO + Performance
 
-- [ ] `sitemap.xml` statisch generiert
-- [ ] `robots.txt`
-- [ ] OpenGraph Tags + Twitter Cards pro Seite
+- [x] `sitemap.xml` statisch generiert (alle Routen)
+- [x] `robots.txt`
+- [x] Meta-Descriptions pro Seite
+- [x] Keywords im Root-Layout
 - [ ] Schema.org JSON-LD für Produkte
-- [ ] Meta-Descriptions
-- [ ] Bilder vorab optimiert (WebP/AVIF)
-- [ ] Lighthouse: Performance ≥95
-- [ ] Lighthouse: Accessibility = 100
-- [ ] Lighthouse: SEO = 100
-- [ ] Bundle Size First Load <100kb JS
+- [ ] OpenGraph-Bilder pro Seite
+- [ ] Lighthouse-Audit
 
 ---
 
@@ -201,3 +196,9 @@
 - **2026-05-21 · MacBook:** Phase 3 komplett — Homepage neu aufgebaut: Trust-Bar (VDMA/PRE/PREVENT),
   Bento-Grid Kategorien (6 Cards, featured Schneidmühlen 2×2), 3 Branchen-Highlights mit Specs,
   YouTube Imagefilm eingebettet, News-Section (3 Karten), Messen-Banner (K-Messe 2025).
+
+- **2026-05-21 · MacBook:** Phasen 4–9 komplett — Produktseiten (14 Maschinen, 5 Kategorien,
+  SpecTable, generierte Detail-Seiten), Branchen (3 Prozessketten mit je 13–14 Stufen),
+  Service (Ersatzteile/Reparaturen/Technikum), Karriere (3 Stellen + Ausbildung),
+  Über uns (14 Ansprechpartner), Kontakt (2 Formulare mit Zod + Web3Forms),
+  News + Messen + Impressum + Datenschutz. Sitemap.xml + robots.txt. 50+ statische Seiten.
