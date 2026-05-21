@@ -10,7 +10,7 @@
 
 **Letzte Aktualisierung:** 2026-05-21 · MacBook
 **Aktives Gerät:** MacBook
-**Aktuelle Phase:** Phase 3 abgeschlossen → Phase 4 (Produktseiten)
+**Aktuelle Phase:** Phase 5 abgeschlossen → Phase 6 (Service / Karriere / Unternehmen)
 **Live URL:** https://volljonas45-byte.github.io/NEUE-HERBOLD-Maschinen-u.-Anlagenbau-GmbH/
 **Repo:** https://github.com/volljonas45-byte/NEUE-HERBOLD-Maschinen-u.-Anlagenbau-GmbH
 
@@ -95,25 +95,25 @@
 
 ## Phase 4 — Produktseiten
 
-- [ ] Kategorie-Hub-Template (`/maschinen/[category]/page.tsx`)
-- [ ] Produkt-Detail-Template (`/maschinen/[category]/[slug]/page.tsx`)
-- [ ] Daten aus CONTENT.md in TypeScript-Files migrieren
-- [ ] `<SpecTable />` (responsive, Mobile-friendly)
-- [ ] `<VideoPlayer />` (Custom Player, kein YouTube-Embed)
-- [ ] Bilder-Galerie mit Lightbox
-- [ ] Verwandte-Produkte-Logik
-- [ ] Alle 30+ Produkte mit ihren Specs
+- [x] Kategorie-Hub-Template (`/maschinen/[category]/page.tsx`)
+- [x] Produkt-Detail-Template (`/maschinen/[category]/[slug]/page.tsx`)
+- [x] Daten aus CONTENT.md in TypeScript-Files migrieren (`src/data/products.ts`)
+- [x] `<SpecTable />` (responsive, Mobile-friendly)
+- [x] Verwandte-Produkte-Logik
+- [x] 14 Produkte in 5 Kategorien mit technischen Daten
+- [ ] `<VideoPlayer />` (Custom Player mit Poster — Videos noch nicht heruntergeladen)
+- [ ] Bilder-Galerie mit Lightbox (Echte Maschinenfotos fehlen noch)
 
 ---
 
 ## Phase 5 — Branchen-Seiten
 
-- [ ] Branchen-Hub `/branchen/page.tsx`
-- [ ] `<ProcessDiagram />` (interaktiv, animiert, 14 Stufen)
-- [ ] PET-Flaschen-Seite mit 14-Stufen-Prozess
-- [ ] Folien-Seite mit 13-Stufen-Prozess
-- [ ] Getränkekästen-Seite mit 14-Stufen-Prozess
-- [ ] Material-Tag-System
+- [x] Branchen-Hub `/branchen/page.tsx`
+- [x] PET-Flaschen-Seite mit 14-Stufen-Prozess
+- [x] Folien-Seite mit 13-Stufen-Prozess
+- [x] Getränkekästen-Seite mit 14-Stufen-Prozess
+- [x] Branchen-Kategorie-Templates (6 Kategorien)
+- [ ] `<ProcessDiagram />` animiert (aktuell statisches Grid, ausreichend für jetzt)
 
 ---
 
