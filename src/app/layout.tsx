@@ -20,7 +20,7 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "NEUE HERBOLD — Maschinen & Anlagenbau",
+    default: "NEUE HERBOLD — Maschinen & Anlagenbau für Kunststoffrecycling",
     template: "%s | NEUE HERBOLD",
   },
   description:
@@ -31,12 +31,18 @@ export const metadata: Metadata = {
     "Recyclingmaschinen",
     "Zerkleinerungsmaschinen",
     "Waschanlagen",
+    "Kunststoffrecycling",
     "Sinsheim",
+    "Made in Germany",
   ],
   openGraph: {
     type: "website",
     locale: "de_DE",
     siteName: "NEUE HERBOLD",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
