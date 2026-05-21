@@ -27,6 +27,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/aktuelles/messen`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE_URL}/rechtliches/impressum`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
     { url: `${BASE_URL}/rechtliches/datenschutz`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${BASE_URL}/rechtliches/agb`, lastModified: now, changeFrequency: "yearly", priority: 0.2 },
+    { url: `${BASE_URL}/rechtliches/einkaufsbedingungen`, lastModified: now, changeFrequency: "yearly", priority: 0.2 },
+    { url: `${BASE_URL}/gebrauchtmaschinen`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${BASE_URL}/downloads`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${BASE_URL}/aktuelles`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${BASE_URL}/unternehmen`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE_URL}/karriere/stellenangebote`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${BASE_URL}/karriere/initiativbewerbung`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
+    { url: `${BASE_URL}/kontakt/ansprechpartner`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE_URL}/service/zubehoer`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
   ];
 
   const categoryRoutes: MetadataRoute.Sitemap = categories.flatMap((cat) => [

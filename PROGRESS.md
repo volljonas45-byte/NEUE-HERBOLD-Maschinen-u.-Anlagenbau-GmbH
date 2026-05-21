@@ -8,9 +8,9 @@
 
 ## Status
 
-**Letzte Aktualisierung:** 2026-05-21 · MacBook
-**Aktives Gerät:** MacBook
-**Aktuelle Phase:** Phase 9 abgeschlossen → Finale Politur / Phase 10
+**Letzte Aktualisierung:** 2026-05-21 · Windows-PC
+**Aktives Gerät:** Windows-PC
+**Aktuelle Phase:** Fehlende Unterseiten ergänzt — Phase 10 (QA) steht noch aus
 **Live URL:** https://volljonas45-byte.github.io/NEUE-HERBOLD-Maschinen-u.-Anlagenbau-GmbH/
 **Repo:** https://github.com/volljonas45-byte/NEUE-HERBOLD-Maschinen-u.-Anlagenbau-GmbH
 
@@ -18,13 +18,13 @@
 
 ## Was als nächstes
 
-→ **Phase 4: Produktseiten** (Templates)
-- Kategorie-Hub `/maschinen/page.tsx` (6 Kategorien als Grid mit Hero + Breadcrumbs)
-- Kategorie-Template `/maschinen/[category]/page.tsx`
-- Produkt-Detail-Template `/maschinen/[category]/[slug]/page.tsx`
-- Produktdaten aus CONTENT.md → TypeScript-Files in `src/data/products/`
-- `<SpecTable />` Komponente
-- `<VideoPlayer />` Komponente (eigener Player, kein YouTube-Embed)
+→ **Phase 10 — QA & Feinschliff**
+- Alle neuen Seiten live auf GitHub Pages prüfen
+- Web3Forms API-Key eintragen (Kontaktformulare → echte Emails)
+- Echte Maschinen-Fotos einbauen sobald verfügbar
+- `/maschinen/peripherie` Seite erstellen (im Mega-Menu verlinkt)
+- Anfahrt-Seite `/kontakt/anfahrt` (GPS-Daten Sinsheim)
+- Cross-Browser + Mobile Test
 
 ---
 
@@ -166,7 +166,7 @@
 - [ ] Cross-Browser-Test (Safari, Chrome, Firefox, Edge)
 - [ ] Device-Test (375px → 4K)
 - [ ] Cookie-Banner falls Analytics aktiv
-- [ ] Impressum + Datenschutz + AGB
+- [x] Impressum + Datenschutz + AGB + Einkaufsbedingungen
 - [ ] (optional) Custom Domain via CNAME
 - [ ] Finale Live-URL geprüft
 
@@ -202,3 +202,9 @@
   Service (Ersatzteile/Reparaturen/Technikum), Karriere (3 Stellen + Ausbildung),
   Über uns (14 Ansprechpartner), Kontakt (2 Formulare mit Zod + Web3Forms),
   News + Messen + Impressum + Datenschutz. Sitemap.xml + robots.txt. 50+ statische Seiten.
+
+- **2026-05-21 · Windows-PC:** Fehlende Unterseiten ergänzt (Gap-Analyse & Build):
+  /gebrauchtmaschinen, /aktuelles (Hub), /unternehmen (Hub), /karriere/stellenangebote (4 Stellen),
+  /karriere/initiativbewerbung, /kontakt/ansprechpartner (14 Personen nach Bereich),
+  /service/zubehoer, /rechtliches/agb, /rechtliches/einkaufsbedingungen, /downloads.
+  Sitemap um alle neuen Routen erweitert. 60+ statische Seiten.
