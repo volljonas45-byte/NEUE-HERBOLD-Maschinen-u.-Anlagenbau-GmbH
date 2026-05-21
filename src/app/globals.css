@@ -37,9 +37,10 @@
   --breakpoint-3xl: 1920px;
   --breakpoint-4xl: 2560px;
 
-  /* Font */
+  /* Fonts */
   --font-sans: var(--font-inter);
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: var(--font-jakarta);
+  --font-mono: ui-monospace, "SF Mono", monospace;
 }
 
 /* ─── shadcn theme mapping ───────────────────────────────────────────────── */
@@ -161,8 +162,16 @@
   }
   body {
     @apply bg-bone text-graphite-900 antialiased;
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-feature-settings: "kern" 1, "liga" 1;
   }
   html {
     @apply font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-jakarta), var(--font-inter), system-ui, sans-serif;
+    letter-spacing: -0.03em;
   }
 }
