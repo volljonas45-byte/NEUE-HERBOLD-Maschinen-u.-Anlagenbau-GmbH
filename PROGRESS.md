@@ -10,7 +10,7 @@
 
 **Letzte Aktualisierung:** 2026-05-21 · MacBook
 **Aktives Gerät:** MacBook
-**Aktuelle Phase:** Phase 2 abgeschlossen → Phase 3 (Produktseiten)
+**Aktuelle Phase:** Phase 3 abgeschlossen → Phase 4 (Produktseiten)
 **Live URL:** https://volljonas45-byte.github.io/NEUE-HERBOLD-Maschinen-u.-Anlagenbau-GmbH/
 **Repo:** https://github.com/volljonas45-byte/NEUE-HERBOLD-Maschinen-u.-Anlagenbau-GmbH
 
@@ -18,14 +18,13 @@
 
 ## Was als nächstes
 
-→ **Phase 3: Maschinen-Übersichtsseite** `/maschinen/`
-- Kategorie-Hub mit 6 Kategorien als Grid-Cards
-- Jede Card: Maschinenname, Kurzbeschreibung, Link zur Kategorie
-- Hero mit Breadcrumbs
-
-→ **Phase 4: Produktdetailseiten** (Templates)
-- Kategorie-Template `/maschinen/[category]/`
-- Produkt-Detail-Template `/maschinen/[category]/[slug]/`
+→ **Phase 4: Produktseiten** (Templates)
+- Kategorie-Hub `/maschinen/page.tsx` (6 Kategorien als Grid mit Hero + Breadcrumbs)
+- Kategorie-Template `/maschinen/[category]/page.tsx`
+- Produkt-Detail-Template `/maschinen/[category]/[slug]/page.tsx`
+- Produktdaten aus CONTENT.md → TypeScript-Files in `src/data/products/`
+- `<SpecTable />` Komponente
+- `<VideoPlayer />` Komponente (eigener Player, kein YouTube-Embed)
 
 ---
 
@@ -83,14 +82,14 @@
 
 ## Phase 3 — Homepage
 
-- [ ] Hero mit Video-Background (Placeholder oder erstes Video aus den 14)
-- [ ] Trust-Bar (VDMA, PRE, PREVENT, "Seit 1995", "70 Mitarbeiter", "40 Länder")
-- [ ] Produktkategorien-Grid (6 Cards: Vor-/Nachzerkleinerung, Feinmahlung, Waschanlagen, Wertstoff, Gebraucht)
-- [ ] 3 Branchen-Highlights (PET, Folien, Getränkekästen)
-- [ ] Prozess-Animation Block
-- [ ] News-Section (3 News Cards)
-- [ ] Messen-Banner (K-Messe 2025)
-- [ ] Footer-CTA "Probemahlung anfragen"
+- [x] Hero mit Video-Background (Placeholder oder erstes Video aus den 14)
+- [x] Trust-Bar (VDMA, PRE, PREVENT, "Seit 1995", "70 Mitarbeiter", "40 Länder")
+- [x] Produktkategorien-Grid (6 Cards: Vor-/Nachzerkleinerung, Feinmahlung, Waschanlagen, Wertstoff, Gebraucht)
+- [x] 3 Branchen-Highlights (PET, Folien, Getränkekästen)
+- [x] Prozess-Animation Block
+- [x] News-Section (3 News Cards)
+- [x] Messen-Banner (K-Messe 2025)
+- [x] Footer-CTA "Probemahlung anfragen"
 
 ---
 
@@ -195,3 +194,10 @@
   Design System mit Markenfarben, Inter Font, Container, Logo, Button, Header, Footer,
   Demo-Homepage mit Hero + Trust-Bar + 6 Kategorie-Cards + Über-uns + 3 Anwendungs-Cards + CTA.
   Erster Push zu GitHub, GitHub Action wartet auf Ausführung.
+
+- **2026-05-21 · MacBook:** Phase 2 komplett — Mega-Menu (3 Spalten Maschinen), Mobile Sheet-Menu,
+  Breadcrumbs, SearchOverlay (⌘K, 30+ Einträge), Hide-on-Scroll Header, aktive Link-States.
+
+- **2026-05-21 · MacBook:** Phase 3 komplett — Homepage neu aufgebaut: Trust-Bar (VDMA/PRE/PREVENT),
+  Bento-Grid Kategorien (6 Cards, featured Schneidmühlen 2×2), 3 Branchen-Highlights mit Specs,
+  YouTube Imagefilm eingebettet, News-Section (3 Karten), Messen-Banner (K-Messe 2025).
