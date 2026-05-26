@@ -65,7 +65,6 @@ export default async function CategoryPage({ params }: Props) {
               <StaggerItem key={product.slug}>
               <Link
                 href={`/maschinen/${cat.slug}/${product.slug}`}
-                href={`/maschinen/${cat.slug}/${product.slug}`}
                 className="group border border-graphite-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-brand-cyan/30 transition-all duration-300 bg-white"
               >
                 {/* Image area */}
