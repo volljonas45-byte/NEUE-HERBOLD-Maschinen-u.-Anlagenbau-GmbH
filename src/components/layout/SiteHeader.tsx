@@ -146,7 +146,7 @@ export function SiteHeader() {
           headerVisible ? "translate-y-0" : "-translate-y-full",
           scrolled
             ? "bg-brand-deep/97 backdrop-blur-xl border-b border-white/8"
-            : "bg-transparent",
+            : "bg-gradient-to-b from-brand-deep/80 to-transparent",
         )}
         onMouseLeave={scheduleClose}
         onMouseEnter={() => cancelClose()}
@@ -173,7 +173,7 @@ export function SiteHeader() {
                     "relative flex items-center gap-1 px-3.5 py-2 text-sm transition-colors",
                     isActive(item.href)
                       ? "text-white"
-                      : "text-white/60 hover:text-white",
+                      : "text-white/90 hover:text-white",
                   )}
                 >
                   {item.label}
@@ -181,7 +181,7 @@ export function SiteHeader() {
                     <ChevronDown
                       className={cn(
                         "size-3 transition-transform duration-200",
-                        isActive(item.href) ? "text-white/50" : "text-white/30",
+                        isActive(item.href) ? "text-white/70" : "text-white/60",
                         activeDropdown === item.label && "rotate-180",
                       )}
                     />

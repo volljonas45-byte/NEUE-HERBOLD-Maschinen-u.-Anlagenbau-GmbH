@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { categories, getCategoryBySlug } from "@/data/products";
+import { FadeUp, StaggerGroup, StaggerItem } from "@/components/ui/motion";
 
 type Props = {
   params: Promise<{ category: string }>;
@@ -58,24 +60,43 @@ export default async function CategoryPage({ params }: Props) {
             <p className="mt-1 text-graphite-600 text-sm">{cat.shortDesc}</p>
           </div>
 
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
+          <StaggerGroup className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
             {cat.products.map((product, i) => (
+              <StaggerItem key={product.slug}>
               <Link
-                key={product.slug}
+                href={`/maschinen/${cat.slug}/${product.slug}`}
                 href={`/maschinen/${cat.slug}/${product.slug}`}
                 className="group border border-graphite-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-brand-cyan/30 transition-all duration-300 bg-white"
               >
-                {/* Placeholder image area */}
+                {/* Image area */}
                 <div className="h-44 bg-gradient-to-br from-brand-blue to-brand-deep flex items-center justify-center relative overflow-hidden">
-                  <span className="font-mono text-7xl font-bold text-white/5 select-none absolute">
-                    {product.shortName}
-                  </span>
-                  <div className="relative text-center">
-                    <p className="text-brand-cyan text-xs font-mono tracking-widest uppercase mb-1">
-                      {String(i + 1).padStart(2, "0")}
-                    </p>
-                    <p className="text-white text-2xl font-bold">{product.shortName}</p>
-                  </div>
+                  {product.imageSrc ? (
+                    <>
+                      <Image
+                        src={product.imageSrc}
+                        alt={product.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/70 via-brand-deep/20 to-transparent" />
+                      <div className="absolute top-3 left-3 text-brand-cyan text-xs font-mono tracking-widest opacity-80">
+                        {String(i + 1).padStart(2, "0")}
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <span className="font-mono text-7xl font-bold text-white/5 select-none absolute">
+                        {product.shortName}
+                      </span>
+                      <div className="relative text-center">
+                        <p className="text-brand-cyan text-xs font-mono tracking-widest uppercase mb-1">
+                          {String(i + 1).padStart(2, "0")}
+                        </p>
+                        <p className="text-white text-2xl font-bold">{product.shortName}</p>
+                      </div>
+                    </>
+                  )}
                   {product.videos.length > 0 && (
                     <div className="absolute bottom-3 right-3 bg-brand-cyan/20 text-brand-cyan text-xs px-2 py-1 rounded-full font-mono">
                       {product.videos.length} Video{product.videos.length > 1 ? "s" : ""}
@@ -119,8 +140,9 @@ export default async function CategoryPage({ params }: Props) {
                   </div>
                 </div>
               </Link>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
         </Container>
       </section>
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CheckCircle2, ChevronRight, ArrowRight, Play } from "lucide-react";
@@ -71,20 +72,36 @@ export default async function ProductPage({ params }: Props) {
               </ul>
             </div>
 
-            {/* Product visual placeholder */}
-            <div className="relative h-64 lg:h-80 rounded-2xl overflow-hidden bg-gradient-to-br from-brand-steel to-brand-deep border border-white/10 flex items-center justify-center">
-              <span className="font-mono text-[8rem] font-black text-white/5 select-none absolute">
-                {product.shortName}
-              </span>
-              <div className="relative text-center">
-                <p className="text-brand-cyan/60 text-xs font-mono tracking-widest uppercase mb-2">
-                  {cat.name}
-                </p>
-                <p className="text-white text-4xl font-black">{product.shortName}</p>
-                <p className="text-white/30 text-sm mt-2 font-mono">
-                  {product.models.length} Baugröße{product.models.length !== 1 ? "n" : ""}
-                </p>
-              </div>
+            {/* Product visual */}
+            <div className="relative h-64 lg:h-80 rounded-2xl overflow-hidden bg-gradient-to-br from-brand-steel to-brand-deep border border-white/10">
+              {product.imageSrc ? (
+                <>
+                  <Image
+                    src={product.imageSrc}
+                    alt={product.name}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/70 via-transparent to-transparent" />
+                </>
+              ) : (
+                <div className="flex items-center justify-center h-full">
+                  <span className="font-mono text-[8rem] font-black text-white/5 select-none absolute">
+                    {product.shortName}
+                  </span>
+                  <div className="relative text-center">
+                    <p className="text-brand-cyan/60 text-xs font-mono tracking-widest uppercase mb-2">
+                      {cat.name}
+                    </p>
+                    <p className="text-white text-4xl font-black">{product.shortName}</p>
+                    <p className="text-white/30 text-sm mt-2 font-mono">
+                      {product.models.length} Baugröße{product.models.length !== 1 ? "n" : ""}
+                    </p>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </Container>

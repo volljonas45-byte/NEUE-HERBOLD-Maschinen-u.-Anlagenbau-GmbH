@@ -1,5 +1,6 @@
-import { cn } from "@/lib/utils";
+import Image from "next/image";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 interface LogoProps {
   variant?: "light" | "dark";
@@ -9,9 +10,9 @@ interface LogoProps {
 }
 
 const sizeMap = {
-  sm: { main: "text-lg font-black tracking-tight", sub: "text-xs" },
-  md: { main: "text-xl font-black tracking-tight", sub: "text-xs" },
-  lg: { main: "text-2xl font-black tracking-tight", sub: "text-sm" },
+  sm: "h-14",
+  md: "h-20",
+  lg: "h-24",
 };
 
 export function Logo({
@@ -20,27 +21,22 @@ export function Logo({
   className,
   asLink = true,
 }: LogoProps) {
-  const isDark = variant === "dark";
-  const s = sizeMap[size];
+  const h = sizeMap[size];
 
   const content = (
-    <div className={cn("flex flex-col leading-none select-none", className)}>
-      <span className={cn(s.main)}>
-        <span className="text-brand-cyan">NEUE</span>
-        <span className={isDark ? " text-white" : " text-brand-blue"}>
-          {" "}
-          HERBOLD
-        </span>
-      </span>
-      <span
-        className={cn(
-          s.sub,
-          "font-normal tracking-widest uppercase mt-0.5",
-          isDark ? "text-white/60" : "text-graphite-600",
-        )}
-      >
-        Maschinen &amp; Anlagenbau
-      </span>
+    <div className={cn("inline-flex items-center shrink-0", className)}>
+      <Image
+        src={
+          variant === "dark"
+            ? "/images/neue-herbold-logo-white.png"
+            : "/images/Neue Herold logo.png"
+        }
+        alt="NEUE HERBOLD Maschinen und Anlagenbau GmbH"
+        width={280}
+        height={90}
+        className={cn("w-auto object-contain", h)}
+        priority
+      />
     </div>
   );
 

@@ -21,6 +21,7 @@ export type Product = {
   specHeaders: string[];
   models: ModelSpec[];
   relatedSlugs: string[];
+  imageSrc?: string;
 };
 
 export type Category = {
@@ -62,6 +63,7 @@ const einwellenschredder: Product = {
     { type: "HZR 1600", "Rotordurchmesser (mm)": 600, "Arbeitsbreite (mm)": 1600 },
   ],
   relatedSlugs: ["zweiwellenschredder", "schneckenbrecher"],
+  imageSrc: "/images/products/schredder/einwellenschredder-HZR.jpg",
 };
 
 const zweiwellenschredder: Product = {
@@ -86,6 +88,7 @@ const zweiwellenschredder: Product = {
     { type: "ZRM 1100/4 (Vierwellen)", "Querschnitt im Mahlraum (mm)": "1030 × 1550" },
   ],
   relatedSlugs: ["einwellenschredder", "guillotinescheren"],
+  imageSrc: "/images/products/schredder/zweiwellenschredder-RM-01.jpg",
 };
 
 const rohrschredder: Product = {
@@ -122,6 +125,7 @@ const rohrschredder: Product = {
     },
   ],
   relatedSlugs: ["einwellenschredder", "schneckenbrecher"],
+  imageSrc: "/images/products/schredder/einwellenschredder-HZR.jpg",
 };
 
 const styroporshredder: Product = {
@@ -143,6 +147,7 @@ const styroporshredder: Product = {
   specHeaders: ["Typ"],
   models: [{ type: "RL (diverse Ausführungen — auf Anfrage)" }],
   relatedSlugs: ["zweiwellenschredder", "schneckenbrecher"],
+  imageSrc: "/images/products/schredder/styroporshredder-RL-01.jpg",
 };
 
 const schneckenbrecher: Product = {
@@ -191,6 +196,7 @@ const schneckenbrecher: Product = {
     },
   ],
   relatedSlugs: ["einwellenschredder", "guillotinescheren"],
+  imageSrc: "/images/products/schredder/schneckenbrecher-anlage.jpg",
 };
 
 const guillotinescheren: Product = {
@@ -237,6 +243,7 @@ const guillotinescheren: Product = {
     },
   ],
   relatedSlugs: ["zweiwellenschredder", "schneckenbrecher"],
+  imageSrc: "/images/products/schredder/guillotineschere-01.jpg",
 };
 
 /* ─── Schneidmühlen ───────────────────────────────────────────────── */
@@ -271,6 +278,7 @@ const schneidmuehle_lm: Product = {
     { type: "LM 600/1200", "A (mm)": 1180, "B (mm)": 2670, "C (mm)": 1154, "D (mm)": 2074, "E (mm)": 710 },
   ],
   relatedSlugs: ["sm", "smv"],
+  imageSrc: "/images/products/schneidmuehlen/LMV.jpg",
 };
 
 const schneidmuehle_sm: Product = {
@@ -312,6 +320,7 @@ const schneidmuehle_sm: Product = {
     { type: "SM 1000/1200", "A (mm)": 2160, "B (mm)": 2680, "C (mm)": 1150, "D (mm)": 2250, "E (mm)": 1140 },
   ],
   relatedSlugs: ["lm", "smv", "sx"],
+  imageSrc: "/images/products/schneidmuehlen/SM.jpg",
 };
 
 const schneidmuehle_smv: Product = {
@@ -340,6 +349,7 @@ const schneidmuehle_smv: Product = {
     { type: "SMV 800/2000", "A (mm)": 1858, "B (mm)": 3264, "C (mm)": 1970, "D (mm)": 3266, "E (mm)": 940 },
   ],
   relatedSlugs: ["sm", "lm", "sx"],
+  imageSrc: "/images/products/schneidmuehlen/SMV.jpg",
 };
 
 const schneidmuehlen_sx: Product = {
@@ -372,6 +382,7 @@ const schneidmuehlen_sx: Product = {
     { type: "SX 800/2000", "A (mm)": 2000, "B (mm)": 2730, "C (mm)": 2104, "D (mm)": 3384, "E (mm)": 940 },
   ],
   relatedSlugs: ["smv", "sm", "lm"],
+  imageSrc: "/images/products/schneidmuehlen/SX.jpg",
 };
 
 const rohrmühlen_sr: Product = {
@@ -396,6 +407,7 @@ const rohrmühlen_sr: Product = {
     { "Verfügbare Typen": "LP 450/600, LP 450/1000" },
   ],
   relatedSlugs: ["lm", "sm"],
+  imageSrc: "/images/products/schneidmuehlen/SR.jpg",
 };
 
 /* ─── Hammermühlen ────────────────────────────────────────────────── */
@@ -433,6 +445,7 @@ const hammermuehle_hm: Product = {
     { type: "HM 1000/1600", "Rotordurchmesser (mm)": 1000, "Arbeitsbreite (mm)": 1600 },
   ],
   relatedSlugs: ["einwellenschredder", "zm"],
+  imageSrc: "/images/products/hammermuehlen/hammermuehle-01.jpg",
 };
 
 /* ─── Feinmühlen ──────────────────────────────────────────────────── */
@@ -461,6 +474,7 @@ const feinmuehle_zm: Product = {
     { type: "ZM 800", "A (mm)": 2260, "B (mm)": 1140, "C (mm)": 1760 },
   ],
   relatedSlugs: ["sm", "hm"],
+  imageSrc: "/images/products/feinmuehlen/ZM-500-01.jpg",
 };
 
 /* ─── Waschanlagen ────────────────────────────────────────────────── */
@@ -507,6 +521,7 @@ const waschanlagen: Product = {
     { Aggregat: "Taumelsiebmaschine TSM", Funktion: "Siebung, Schwebeteile aus Abwasser" },
   ],
   relatedSlugs: ["sm", "lm", "zm"],
+  imageSrc: "/images/products/waschanlagen/waschanlage-01.jpg",
 };
 
 /* ─── Category Registry ───────────────────────────────────────────── */

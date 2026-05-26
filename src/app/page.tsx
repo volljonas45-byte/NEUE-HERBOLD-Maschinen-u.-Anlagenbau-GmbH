@@ -1,7 +1,17 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { cn } from "@/lib/utils";
+import {
+  HeroLine,
+  FadeUp,
+  FadeIn,
+  SlideLeft,
+  SlideRight,
+  StaggerGroup,
+  StaggerItem,
+} from "@/components/ui/motion";
 
 /* ─── Machine Frame ─────────────────────────────────────────────── */
 
@@ -9,38 +19,54 @@ function MachineFrame({
   label,
   tag,
   className,
+  imageSrc,
 }: {
   label: string;
   tag?: string;
   className?: string;
+  imageSrc?: string;
 }) {
   return (
     <div className={cn("relative overflow-hidden", className)}>
-      <div className="absolute inset-0 bg-gradient-to-br from-[#080e2a] to-[#0d1a48]" />
-      <div
-        className="absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage:
-            "linear-gradient(white 1px,transparent 1px),linear-gradient(90deg,white 1px,transparent 1px)",
-          backgroundSize: "48px 48px",
-        }}
-      />
+      {imageSrc ? (
+        <Image
+          src={imageSrc}
+          alt={label}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
+      ) : (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#080e2a] to-[#0d1a48]" />
+          <div
+            className="absolute inset-0 opacity-[0.04]"
+            style={{
+              backgroundImage:
+                "linear-gradient(white 1px,transparent 1px),linear-gradient(90deg,white 1px,transparent 1px)",
+              backgroundSize: "48px 48px",
+            }}
+          />
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <span className="absolute w-full h-px bg-white/5" />
+            <span className="absolute h-full w-px bg-white/5" />
+            <span className="size-5 border border-white/15 rotate-45" />
+          </div>
+        </>
+      )}
+      {/* Dark overlay — always present for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
       <span className="absolute top-4 left-4 block w-5 h-5 border-t border-l border-white/20" />
       <span className="absolute top-4 right-4 block w-5 h-5 border-t border-r border-white/20" />
       <span className="absolute bottom-4 left-4 block w-5 h-5 border-b border-l border-white/20" />
       <span className="absolute bottom-4 right-4 block w-5 h-5 border-b border-r border-white/20" />
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <span className="absolute w-full h-px bg-white/5" />
-        <span className="absolute h-full w-px bg-white/5" />
-        <span className="size-5 border border-white/15 rotate-45" />
-      </div>
       {tag && (
-        <span className="absolute top-5 left-5 text-[0.6rem] tracking-[0.2em] uppercase text-white/30 font-medium">
+        <span className="absolute top-5 left-5 text-[0.6rem] tracking-[0.2em] uppercase text-white/50 font-medium z-10">
           {tag}
         </span>
       )}
       <span
-        className="absolute bottom-5 left-5 font-bold text-white/[0.07] leading-none uppercase select-none"
+        className="absolute bottom-5 left-5 font-bold text-white/[0.07] leading-none uppercase select-none z-10"
         style={{ fontSize: "clamp(1rem, 3vw, 2rem)", letterSpacing: "-0.02em" }}
       >
         {label}
@@ -80,6 +106,7 @@ const categories = [
     tag: "Nachzerkleinerung",
     label: "SM 800",
     featured: true,
+    imageSrc: "/images/products/schneidmuehlen/SMV.jpg",
   },
   {
     n: "02",
@@ -88,6 +115,7 @@ const categories = [
     href: "/maschinen/vorzerkleinerung",
     tag: "Vorzerkleinerung",
     label: "HZR 1300",
+    imageSrc: "/images/products/schredder/einwellenschredder-HZR.jpg",
   },
   {
     n: "03",
@@ -96,6 +124,7 @@ const categories = [
     href: "/maschinen/waschanlagen",
     tag: "Waschen & Trennen",
     label: "FW 800",
+    imageSrc: "/images/products/waschanlagen/waschanlage-01.jpg",
   },
   {
     n: "04",
@@ -104,6 +133,7 @@ const categories = [
     href: "/maschinen/feinmuehlen",
     tag: "Feinmahlung",
     label: "ZM 500",
+    imageSrc: "/images/products/feinmuehlen/ZM-500-01.jpg",
   },
   {
     n: "05",
@@ -112,6 +142,7 @@ const categories = [
     href: "/maschinen/hammermuehlen",
     tag: "Hammermühlen",
     label: "HM 650",
+    imageSrc: "/images/products/hammermuehlen/hammermuehle-01.jpg",
   },
   {
     n: "06",
@@ -120,6 +151,7 @@ const categories = [
     href: "/gebrauchtmaschinen",
     tag: "Gebraucht",
     label: "GEBRAUCHT",
+    imageSrc: "/images/products/gebrauchtmaschinen-teaser.jpg",
   },
 ];
 
@@ -132,6 +164,7 @@ const branchen = [
     throughput: "ca. 500 kg/h",
     machines: "LM 450/1000 · IW · TM · TT",
     href: "/branchen/kunststoffrecycling",
+    imageSrc: "/images/industries/pet-recycling.jpg",
   },
   {
     n: "02",
@@ -141,6 +174,7 @@ const branchen = [
     throughput: "bis 2.000 kg/h",
     machines: "ZRM · ES · IW · TM · TT",
     href: "/branchen/kunststoffrecycling",
+    imageSrc: "/images/industries/plastic-recycling.jpg",
   },
   {
     n: "03",
@@ -150,6 +184,7 @@ const branchen = [
     throughput: "bis 1.500 kg/h",
     machines: "HZR 1300 · SM · TM · TSM",
     href: "/branchen/kunststoffrecycling",
+    imageSrc: "/images/products/waschanlagen/waschanlage-01.jpg",
   },
 ];
 
@@ -202,52 +237,58 @@ export default function HomePage() {
       <section className="min-h-screen bg-brand-deep grid lg:grid-cols-[55%_45%] overflow-hidden">
         <div className="flex flex-col justify-end">
           <Container className="pt-32 pb-0">
-            <DarkLabel>Maschinen &amp; Anlagenbau seit 1995</DarkLabel>
+            <HeroLine delay={0.1}><DarkLabel>Maschinen &amp; Anlagenbau seit 1995</DarkLabel></HeroLine>
 
             <h1 className="text-[clamp(3rem,7vw,6.5rem)] font-bold text-white leading-[1] tracking-[-0.04em]">
-              Zerkleinern,<br />
-              Waschen,<br />
-              <span className="text-brand-cyan">Recyceln.</span>
+              <HeroLine delay={0.2}>Zerkleinern,</HeroLine>
+              <HeroLine delay={0.32}>Waschen,</HeroLine>
+              <HeroLine delay={0.44}><span className="text-brand-cyan">Recyceln.</span></HeroLine>
             </h1>
 
-            <p className="mt-7 text-white/45 text-base leading-[1.7] max-w-[26rem]">
-              Hochleistungsmaschinen und schlüsselfertige Komplettanlagen
-              für die Recyclingbranche — seit 1995 aus Sinsheim.
-            </p>
+            <HeroLine delay={0.6}>
+              <p className="mt-7 text-white/45 text-base leading-[1.7] max-w-[26rem]">
+                Hochleistungsmaschinen und schlüsselfertige Komplettanlagen
+                für die Recyclingbranche — seit 1995 aus Sinsheim.
+              </p>
+            </HeroLine>
 
-            <div className="mt-9 pb-14 flex flex-wrap items-center gap-5">
-              <Link
-                href="/maschinen"
-                className="inline-flex items-center gap-2 h-11 px-7 bg-brand-cyan text-brand-blue text-sm font-semibold rounded-sm hover:bg-brand-cyan-bright transition-colors"
-              >
-                Maschinen entdecken
-                <ArrowRight className="size-3.5" />
-              </Link>
-              <Link
-                href="/kontakt/anfrage"
-                className="inline-flex items-center gap-1.5 text-sm text-white/40 hover:text-white/80 transition-colors"
-              >
-                Anfrage stellen <ArrowUpRight className="size-3.5" />
-              </Link>
-            </div>
+            <HeroLine delay={0.75}>
+              <div className="mt-9 pb-14 flex flex-wrap items-center gap-5">
+                <Link
+                  href="/maschinen"
+                  className="inline-flex items-center gap-2 h-11 px-7 bg-brand-cyan text-brand-blue text-sm font-semibold rounded-sm hover:bg-brand-cyan-bright transition-colors"
+                >
+                  Maschinen entdecken
+                  <ArrowRight className="size-3.5" />
+                </Link>
+                <Link
+                  href="/kontakt/anfrage"
+                  className="inline-flex items-center gap-1.5 text-sm text-white/40 hover:text-white/80 transition-colors"
+                >
+                  Anfrage stellen <ArrowUpRight className="size-3.5" />
+                </Link>
+              </div>
+            </HeroLine>
           </Container>
 
-          <div className="border-t border-white/8">
-            <Container className="py-4">
-              <div className="flex flex-wrap gap-x-8 gap-y-2">
-                {[["1995","Gegründet"],["70+","Mitarbeiter"],["40+","Länder"],["30+","Maschinentypen"]].map(([v,l]) => (
-                  <div key={l} className="flex items-baseline gap-2">
-                    <span className="text-base font-bold text-white">{v}</span>
-                    <span className="text-[0.7rem] text-white/30">{l}</span>
-                  </div>
-                ))}
-              </div>
-            </Container>
-          </div>
+          <HeroLine delay={0.9}>
+            <div className="border-t border-white/8">
+              <Container className="py-4">
+                <div className="flex flex-wrap gap-x-8 gap-y-2">
+                  {[["1995","Gegründet"],["70+","Mitarbeiter"],["40+","Länder"],["30+","Maschinentypen"]].map(([v,l]) => (
+                    <div key={l} className="flex items-baseline gap-2">
+                      <span className="text-base font-bold text-white">{v}</span>
+                      <span className="text-[0.7rem] text-white/30">{l}</span>
+                    </div>
+                  ))}
+                </div>
+              </Container>
+            </div>
+          </HeroLine>
         </div>
 
         <div className="hidden lg:block border-l border-white/8">
-          <MachineFrame label="Schneidmühle SM" tag="Nachzerkleinerung" className="h-full" />
+          <MachineFrame label="Schneidmühle SM" tag="Nachzerkleinerung" className="h-full" imageSrc="/images/products/schneidmuehlen/SM.jpg" />
         </div>
       </section>
 
@@ -296,17 +337,16 @@ export default function HomePage() {
           </div>
 
           {/* Bento grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 auto-rows-[220px]">
+          <StaggerGroup className="grid grid-cols-2 lg:grid-cols-3 gap-3 auto-rows-[220px]">
             {categories.map((cat, i) => (
+              <StaggerItem key={cat.n} className={cn(i === 0 && "lg:col-span-2 lg:row-span-2")}>
               <Link
-                key={cat.n}
                 href={cat.href}
                 className={cn(
-                  "group relative overflow-hidden",
-                  i === 0 && "lg:col-span-2 lg:row-span-2",
+                  "group relative overflow-hidden block h-full",
                 )}
               >
-                <MachineFrame label={cat.label} tag={cat.tag} className="h-full" />
+                <MachineFrame label={cat.label} tag={cat.tag} className="h-full" imageSrc={cat.imageSrc} />
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/85 via-brand-deep/20 to-transparent group-hover:from-brand-deep/95 transition-all duration-300" />
                 {/* Content */}
@@ -330,27 +370,30 @@ export default function HomePage() {
                   </span>
                 </div>
               </Link>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
         </Container>
       </section>
 
       {/* ─── ZAHLEN ───────────────────────────────────────────────── */}
       <section className="bg-brand-blue">
         <Container className="py-16">
-          <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/10">
+          <StaggerGroup className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/10">
             {[
               ["1995","Gegründet"],
               ["70+","Mitarbeiter"],
               ["40+","Länder"],
               ["30+","Maschinentypen"],
             ].map(([v, l]) => (
-              <div key={l} className="px-6 xl:px-10 first:pl-0 last:pr-0 py-4">
-                <div className="text-[clamp(2.5rem,4.5vw,4rem)] font-bold text-brand-cyan leading-none tracking-tight">{v}</div>
-                <div className="mt-1.5 text-xs text-white/40">{l}</div>
-              </div>
+              <StaggerItem key={l}>
+                <div className="px-6 xl:px-10 first:pl-0 last:pr-0 py-4">
+                  <div className="text-[clamp(2.5rem,4.5vw,4rem)] font-bold text-brand-cyan leading-none tracking-tight">{v}</div>
+                  <div className="mt-1.5 text-xs text-white/40">{l}</div>
+                </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
         </Container>
       </section>
 
@@ -369,16 +412,17 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-4">
+          <StaggerGroup className="grid md:grid-cols-3 gap-4">
             {branchen.map((b) => (
+              <StaggerItem key={b.n}>
               <Link
-                key={b.n}
+                href={b.href}
                 href={b.href}
                 className="group bg-white border border-graphite-200 hover:border-brand-cyan/40 hover:shadow-lg hover:shadow-brand-cyan/5 transition-all duration-300 flex flex-col"
               >
                 {/* Frame */}
                 <div className="relative h-44 overflow-hidden">
-                  <MachineFrame label={`PROZESS ${b.n}`} tag={b.category} className="h-full" />
+                  <MachineFrame label={`PROZESS ${b.n}`} tag={b.category} className="h-full" imageSrc={b.imageSrc} />
                   <div className="absolute top-4 right-4 bg-brand-cyan text-brand-blue text-[0.65rem] font-bold px-2 py-0.5">
                     {b.steps} Stufen
                   </div>
@@ -406,8 +450,9 @@ export default function HomePage() {
                   </div>
                 </div>
               </Link>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
         </Container>
       </section>
 
@@ -457,17 +502,19 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+          <StaggerGroup className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
             {process.map((s) => (
-              <div key={s.n} className="relative bg-white border-t-2 border-brand-cyan/50 pt-5 pb-5 px-4">
+              <StaggerItem key={s.n}>
+              <div className="relative bg-white border-t-2 border-brand-cyan/50 pt-5 pb-5 px-4 h-full">
                 <span className="block text-[2.8rem] font-black text-graphite-200 leading-none select-none mb-3 tracking-tighter">
                   {s.n}
                 </span>
                 <p className="text-sm font-semibold text-brand-blue leading-tight">{s.title}</p>
                 <p className="text-[0.68rem] text-graphite-500 mt-1 leading-relaxed">{s.desc}</p>
               </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
         </Container>
       </section>
 
@@ -475,6 +522,7 @@ export default function HomePage() {
       <section className="bg-brand-deep py-24">
         <Container>
           <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <SlideLeft>
             <div>
               <div className="inline-flex items-center gap-2 border border-brand-cyan/25 px-3 py-1 mb-8 rounded-sm">
                 <span className="size-1.5 rounded-full bg-brand-cyan" />
@@ -510,13 +558,16 @@ export default function HomePage() {
                 Probemahlung anfragen <ArrowRight className="size-3.5" />
               </Link>
             </div>
+            </SlideLeft>
 
+            <SlideRight>
             <div className="relative">
-              <MachineFrame label="Technikum" tag="NH · Sinsheim" className="aspect-[4/3]" />
+              <MachineFrame label="Technikum" tag="NH · Sinsheim" className="aspect-[4/3]" imageSrc="/images/company/imagevideo.jpg" />
               <div className="absolute -bottom-3 -right-3 bg-brand-cyan px-4 py-2 rounded-sm">
                 <span className="text-brand-blue text-xs font-bold">Kostenlose Probemahlung</span>
               </div>
             </div>
+            </SlideRight>
           </div>
         </Container>
       </section>
@@ -536,12 +587,12 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <StaggerGroup className="grid md:grid-cols-3 gap-6">
             {news.map((n) => (
+              <StaggerItem key={n.title}>
               <Link
-                key={n.title}
                 href={n.href}
-                className="group border border-graphite-200 hover:border-brand-cyan/40 hover:shadow-lg hover:shadow-brand-cyan/5 transition-all duration-300 flex flex-col"
+                className="group border border-graphite-200 hover:border-brand-cyan/40 hover:shadow-lg hover:shadow-brand-cyan/5 transition-all duration-300 flex flex-col h-full"
               >
                 <div className="p-6 flex flex-col flex-1">
                   <div className="flex items-center gap-3 mb-4">
@@ -561,8 +612,9 @@ export default function HomePage() {
                   </div>
                 </div>
               </Link>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
         </Container>
       </section>
 
