@@ -417,7 +417,6 @@ export default function HomePage() {
               <StaggerItem key={b.n}>
               <Link
                 href={b.href}
-                href={b.href}
                 className="group bg-white border border-graphite-200 hover:border-brand-cyan/40 hover:shadow-lg hover:shadow-brand-cyan/5 transition-all duration-300 flex flex-col"
               >
                 {/* Frame */}
