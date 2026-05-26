@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/ui/NHImage";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
