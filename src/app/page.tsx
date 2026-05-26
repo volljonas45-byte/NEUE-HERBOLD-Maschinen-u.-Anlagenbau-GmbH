@@ -377,24 +377,60 @@ export default function HomePage() {
       </section>
 
       {/* ─── ZAHLEN ───────────────────────────────────────────────── */}
-      <section className="bg-brand-blue">
-        <Container className="py-16">
-          <StaggerGroup className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/10">
+      <section className="relative bg-brand-deep overflow-hidden">
+        {/* glowing top border */}
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-cyan/50 to-transparent" />
+        {/* radial glow blobs */}
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse 60% 80% at 15% 50%, rgba(0,229,255,.05) 0%, transparent 70%), radial-gradient(ellipse 60% 80% at 85% 50%, rgba(0,229,255,.04) 0%, transparent 70%)" }}
+        />
+
+        <Container className="py-20">
+          {/* eyebrow */}
+          <FadeUp className="text-center mb-14">
+            <p className="inline-flex items-center gap-3 text-[0.7rem] font-semibold tracking-[0.22em] uppercase text-white/30">
+              <span className="block h-px w-8 bg-brand-cyan/40" />
+              Zahlen &amp; Fakten
+              <span className="block h-px w-8 bg-brand-cyan/40" />
+            </p>
+          </FadeUp>
+
+          <StaggerGroup className="grid grid-cols-2 lg:grid-cols-4">
             {[
-              ["1995","Gegründet"],
-              ["70+","Mitarbeiter"],
-              ["40+","Länder"],
-              ["30+","Maschinentypen"],
-            ].map(([v, l]) => (
-              <StaggerItem key={l}>
-                <div className="px-6 xl:px-10 first:pl-0 last:pr-0 py-4">
-                  <div className="text-[clamp(2.5rem,4.5vw,4rem)] font-bold text-brand-cyan leading-none tracking-tight">{v}</div>
-                  <div className="mt-1.5 text-xs text-white/40">{l}</div>
+              { v: "1995", l: "Gegründet", sub: "Sinsheim-Reihen" },
+              { v: "70+",  l: "Mitarbeiter", sub: "im Stammwerk" },
+              { v: "40+",  l: "Länder", sub: "Exportmärkte" },
+              { v: "30+",  l: "Maschinentypen", sub: "im Portfolio" },
+            ].map((s, i) => (
+              <StaggerItem key={s.l}>
+                <div className={cn(
+                  "group flex flex-col items-center text-center py-10 px-6",
+                  i > 0 && "border-l border-white/[0.07]"
+                )}>
+                  {/* number with white→cyan gradient */}
+                  <span
+                    className="block text-[clamp(3.2rem,5.5vw,5.5rem)] font-bold leading-none tracking-[-0.04em] select-none"
+                    style={{
+                      background: "linear-gradient(150deg, #ffffff 20%, #00e5ff 100%)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                    }}
+                  >
+                    {s.v}
+                  </span>
+                  {/* label */}
+                  <p className="mt-4 text-[0.7rem] font-semibold tracking-[0.16em] uppercase text-white/60">{s.l}</p>
+                  {/* sub-label */}
+                  <p className="mt-1 text-[0.7rem] text-white/25">{s.sub}</p>
                 </div>
               </StaggerItem>
             ))}
           </StaggerGroup>
         </Container>
+
+        {/* glowing bottom border */}
+        <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
       </section>
 
       {/* ─── BRANCHEN-HIGHLIGHTS ──────────────────────────────────── */}
